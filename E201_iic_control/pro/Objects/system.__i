@@ -1,0 +1,1 @@
+"..\user\system.c" OPTIMIZE (8,SPEED) BROWSE INCDIR(..\bsp;..\lib;..\TimeOut;..\user) DEBUG OBJECTEXTEND PRINT(.\Listings\system.lst) OBJECT(.\Objects\system.obj)

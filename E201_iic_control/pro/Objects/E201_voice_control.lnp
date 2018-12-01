@@ -1,0 +1,9 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj",
+".\Objects\system.obj",
+".\Objects\bsp_led.obj",
+".\Objects\bsp_timer.obj",
+".\Objects\bsp_uart.obj",
+".\Objects\TimeOut.obj" 
+TO ".\Objects\E201_voice_control" 
+PRINT(".\Listings\E201_voice_control.m51") RAMSIZE(256) 
