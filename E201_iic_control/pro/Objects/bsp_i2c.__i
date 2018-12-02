@@ -1,0 +1,1 @@
+"..\bsp\bsp_i2c.c" OPTIMIZE (8,SPEED) BROWSE INCDIR(..\bsp;..\lib;..\TimeOut;..\user) DEBUG OBJECTEXTEND PRINT(.\Listings\bsp_i2c.lst) OBJECT(.\Objects\bsp_i2c.obj)

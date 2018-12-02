@@ -4,6 +4,9 @@
 ".\Objects\bsp_led.obj",
 ".\Objects\bsp_timer.obj",
 ".\Objects\bsp_uart.obj",
+".\Objects\bsp_i2c.obj",
+".\Objects\bsp_i2c_port.obj",
+".\Objects\bsp_i2c_s.obj",
 ".\Objects\TimeOut.obj" 
 TO ".\Objects\E201_voice_control" 
 PRINT(".\Listings\E201_voice_control.m51") RAMSIZE(256) 

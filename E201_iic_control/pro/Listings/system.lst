@@ -1,4 +1,4 @@
-C51 COMPILER V9.59.0.0   SYSTEM                                                            12/01/2018 16:13:00 PAGE 1   
+C51 COMPILER V9.59.0.0   SYSTEM                                                            12/02/2018 17:54:09 PAGE 1   
 
 
 C51 COMPILER V9.59.0.0, COMPILATION OF MODULE SYSTEM
@@ -10,113 +10,234 @@ line level    source
 
    1          #include "system.h"
    2          
-   3          unsigned char Uart0SendFlag,Uart0ReceiveFlag;
-   4          
-   5          unsigned char Rev_Buf;
+   3          #define APP_SET_BACKLIGHT(X)            ( App_Para.Tp_LedSta &= (unsigned char)(X))
+   4          #define APP_CLR_BACKLIGHT(X)            ( App_Para.Tp_LedSta |= (unsigned char)(~X))
+   5          
    6          
-   7          TIMEOUT_PARA TimeOut_Para[2];
+   7          unsigned char Uart0SendFlag,Uart0ReceiveFlag;
    8          
-   9          void System_Init(void)
-  10          {
-  11   1         TimeOutDet_Init();
-  12   1         Led_Init(); 
-  13   1         LED1_SET(1);    
-  14   1         Timer_Init();
-  15   1         Uart_Init(); 
-  16   1      }
-  17          
-  18          void Send_Byte(unsigned char DATA)
-  19          {
-  20   1          SSDAT = DATA;
-  21   1          while(!(Uart0SendFlag));
-  22   1          Uart0SendFlag = 0;
-  23   1      }
-  24          
-  25          unsigned char Rev_Byte(void)
-  26          {
-  27   1         return SSDAT;    
-  28   1      }
-  29          
-  30          
-  31          void System_Handle(void)
-  32          {
-  33   1        static unsigned int Cnt; 
-  34   1        if(0x77 == Rev_Byte())
-  35   1        {
-  36   2          LED1_SET(0);   
-  37   2        }
-  38   1        
-  39   1        if(TimeOutDet_Check(&TimeOut_Para[0]))
-  40   1        {
-  41   2           TimeOut_Record(&TimeOut_Para[0],100);
-  42   2           ++ Cnt;
-  43   2           if(Cnt & 0x01)
-  44   2           {
-  45   3              //
-  46   3              Send_Byte(0X55);     
-  47   3           }
-  48   2           else 
-  49   2           {
-  50   3              //;            
-  51   3           }
-  52   2        }
-  53   1        
-  54   1      }
-C51 COMPILER V9.59.0.0   SYSTEM                                                            12/01/2018 16:13:00 PAGE 2   
+   9          unsigned char Rev_Buf;
+  10          
+  11          TIMEOUT_PARA TimeOut_Para[2];
+  12          
+  13          static xdata App_Para_t App_Para;
+  14          static xdata IIC_PARA_t I2c_Para[IIC_NUM];
+  15          
+  16          
+  17          void System_Init(void)
+  18          {
+  19   1         int i;
+  20   1         TimeOutDet_Init();
+  21   1         Led_Init(); 
+  22   1         LED1_SET(1);
+  23   1         for(i = 0;i < IIC_NUM;i ++){
+  24   2                      I2c_Para[i].ID = i;
+  25   2                      if(i == 0){
+  26   3                              I2c_Para[i].read_addr = I2C_READ_ADDR;
+  27   3                              I2c_Para[i].write_addr = I2C_WRITE_ADDR;
+  28   3                      }
+  29   2                      IIC_Init(&I2c_Para[i]);
+  30   2              }
+  31   1              P1PH |= 0X80; // i2c int 
+  32   1         APP_CLR_BACKLIGHT(0x40);     //0x40    0xbf
+  33   1         IIC_Write_Data(&I2c_Para[0], I2c_Para[0].write_addr, App_Para.Tp_LedSta);
+  34   1         Timer_Init();
+  35   1         Uart_Init(); 
+  36   1      }
+  37          
+  38          void Send_Byte(unsigned char DATA)
+  39          {
+  40   1          SSDAT = DATA;
+  41   1          while(!(Uart0SendFlag));
+  42   1          Uart0SendFlag = 0;
+  43   1      }
+  44          
+  45          unsigned char Rev_Byte(void)
+  46          {
+  47   1         return SSDAT;    
+  48   1      }
+  49          
+  50          
+  51          void System_Handle(void)
+  52          {
+  53   1        #if 0
+                static unsigned int Cnt; 
+C51 COMPILER V9.59.0.0   SYSTEM                                                            12/02/2018 17:54:09 PAGE 2   
 
-  55          
-  56          /**************************************************
-  57          *函数名称：void timer0/1() interrupt 1/3
-  58          *函数功能：定时器中断产生方波
-  59          *入口参数：void
-  60          *出口参数：void
-  61          **************************************************/
-  62          void timer0() interrupt 1
-  63          {
-  64   1          TL0 = (65536 - 1000)%256;    
-  65   1              TH0 = (65536 - 1000)/256;
-  66   1          TimeOutDet_DecHandle();
-  67   1      }
-  68          
-  69          void timer1() interrupt 3
-  70          {
-  71   1          TL1 = (65536 - 24000)%256;
-  72   1              TH1 = (65536 - 24000)/256;
-  73   1              
-  74   1      }
-  75          
-  76          void Timer2Int(void) interrupt 5
-  77          {               
-  78   1              TF2 = 0;   //溢出清零
-  79   1          
-  80   1      }
-  81          
-  82          /*****************************************************
-  83          *函数名称：void UartInt(void) interrupt 4
-  84          *函数功能：Uart0中断函数
-  85          *入口参数：void
-  86          *出口参数：void
-  87          *****************************************************/
-  88          void Bsp_Uart1IqrHandle() interrupt 7
-  89          {
-  90   1         if(SSCON0&0x02)
-  91   1         {
-  92   2              SSCON0&=0xFD;
-  93   2              Uart0SendFlag = 1;
-  94   2         }
-  95   1              if((SSCON0&0x01)){
-  96   2                      SSCON0&=0xFE;
-  97   2              Uart0ReceiveFlag = 1;
-  98   2          }
-  99   1      }
+                if(0x77 == Rev_Byte())
+                {
+                  LED1_SET(0);   
+                }
+                
+                if(TimeOutDet_Check(&TimeOut_Para[0]))
+                {
+                   TimeOut_Record(&TimeOut_Para[0],100);
+                   ++ Cnt;
+                   if(Cnt & 0x01)
+                   {
+                      //
+                      Send_Byte(0X55);     
+                   }
+                   else 
+                   {
+                      IIC_Write_Data(&I2c_Para[0], I2c_Para[0].write_addr, App_Para.Tp_LedSta);           
+                   }
+                }
+                #endif
+  75   1              if(!Get_I2C_INT()){
+  76   2                      IIC_Read_Data(&I2c_Para[0], I2c_Para[0].read_addr, &App_Para.TP_GetKey);
+  77   2              
+  78   2                      switch(App_Para.TP_GetKey){
+  79   3                              case 0x01:{
+  80   4                                      if(App_Para.Tp_CurKey != 0x01){
+  81   5                                              App_Para.Tp_CurKey = 0x01;
+  82   5                                              TimeOut_Record(&App_Para.LockLong_DetTimer[1], 100);
+  83   5                                              App_Para.LockDetFlag[1] = 1;
+  84   5                                      }
+  85   4                                      break;
+  86   4                              }
+  87   3      
+  88   3                              case 0x02:{
+  89   4                                      if(App_Para.Tp_CurKey != 0x02){
+  90   5                                              App_Para.Tp_CurKey = 0x02;
+  91   5                                              //App_Key4Handle();//制冷/制热
+  92   5                                              //App_Key1Handle(); //制冷/制热
+  93   5                                      }
+  94   4                                      break;
+  95   4                              }
+  96   3      
+  97   3                              case 0x04:{
+  98   4                                      if(App_Para.Tp_CurKey != 0x04){
+  99   5                                              App_Para.Tp_CurKey = 0x04;
+ 100   5                                              //App_Key5Handle();   //脚灯
+ 101   5                                      }
+ 102   4                                      break;
+ 103   4                              }
+ 104   3      
+ 105   3                              case 0x08:{
+ 106   4                                      if(App_Para.Tp_CurKey != 0x08){
+ 107   5                                              App_Para.Tp_CurKey = 0x08;
+ 108   5                                              //App_Key1Handle(); //制冷/制热
+ 109   5                                              //App_Key4Handle();//制冷/制热
+ 110   5                                      }
+ 111   4                                      break;
+ 112   4                              }
+ 113   3                              
+ 114   3                              case 0x10:{
+ 115   4                                      if(App_Para.Tp_CurKey != 0x10){
+ 116   5                                              App_Para.Tp_CurKey = 0x10;
+C51 COMPILER V9.59.0.0   SYSTEM                                                            12/02/2018 17:54:09 PAGE 3   
+
+ 117   5                                              //App_Key3Handle();
+ 118   5                                      }
+ 119   4                                      break;
+ 120   4                              }
+ 121   3      
+ 122   3                              case 0x20:{
+ 123   4                                      if(App_Para.Tp_CurKey != 0x20){
+ 124   5                                              App_Para.Tp_CurKey = 0x20;
+ 125   5                                              //App_Key2Handle();
+ 126   5                                      }
+ 127   4                                      break;
+ 128   4                              }
+ 129   3                              default:{
+ 130   4                                      if(App_Para.Tp_CurKey){
+ 131   5                                              App_Para.Tp_CurKey = 0;
+ 132   5                                              //LED1_PIN = OFF; 
+ 133   5                                              //LED2_PIN = OFF;
+ 134   5                                              //APP_CLR_BACKLIGHT(TP_KEY5_LED);
+ 135   5                                              //APP_CLR_BACKLIGHT(TP_KEY3_LED);
+ 136   5                                              IIC_Write_Data(&I2c_Para[0], I2c_Para[0].write_addr, App_Para.Tp_LedSta);
+ 137   5                                              App_Para.LockDetFlag[1] = 0;                                    
+ 138   5                                              //if(App_Para.Pushrod_Status != PUSHROD_STOP){
+ 139   5                                              //      App_Para.UpDataFlag = True;
+ 140   5                                              //      App_Para.Pushrod_Status = PUSHROD_STOP;
+ 141   5                                              //}
+ 142   5                                      }
+ 143   4                                      break;
+ 144   4                              }
+ 145   3                      }
+ 146   2              }
+ 147   1              
+ 148   1      }
+ 149          
+ 150          /**************************************************
+ 151          *函数名称：void timer0/1() interrupt 1/3
+ 152          *函数功能：定时器中断产生方波
+ 153          *入口参数：void
+ 154          *出口参数：void
+ 155          **************************************************/
+ 156          void timer0() interrupt 1
+ 157          {
+ 158   1          TL0 = (65536 - 1000)%256;    
+ 159   1              TH0 = (65536 - 1000)/256;
+ 160   1          TimeOutDet_DecHandle();
+ 161   1      }
+ 162          
+ 163          void timer1() interrupt 3
+ 164          {
+ 165   1          TL1 = (65536 - 24000)%256;
+ 166   1              TH1 = (65536 - 24000)/256;
+ 167   1              
+ 168   1      }
+ 169          
+ 170          void Timer2Int(void) interrupt 5
+ 171          {               
+ 172   1              TF2 = 0;   //溢出清零
+ 173   1          
+ 174   1      }
+ 175          
+ 176          /*****************************************************
+ 177          *函数名称：void UartInt(void) interrupt 4
+ 178          *函数功能：Uart0中断函数
+C51 COMPILER V9.59.0.0   SYSTEM                                                            12/02/2018 17:54:09 PAGE 4   
+
+ 179          *入口参数：void
+ 180          *出口参数：void
+ 181          *****************************************************/
+ 182          void Bsp_Uart1IqrHandle() interrupt 7
+ 183          {
+ 184   1         if(SSCON0&0x02)
+ 185   1         {
+ 186   2              SSCON0&=0xFD;
+ 187   2              Uart0SendFlag = 1;
+ 188   2         }
+ 189   1              if((SSCON0&0x01)){
+ 190   2                      SSCON0&=0xFE;
+ 191   2              Uart0ReceiveFlag = 1;
+ 192   2          }
+ 193   1      }
+ 194          
+ 195          void I2c_Irq() interrupt 7{
+ 196   1              /*<主机发送数据>*/
+ 197   1              if( (SSCON0&0x07) == 0x02){
+ 198   2                      unsigned char get_data = SSDAT;
+ 199   2                      if(get_data != I2C_ADDR){
+ 200   3                              //App_LedHandle(get_data);
+ 201   3                      }
+ 202   2              }
+ 203   1              /*<主机接收数据>*/
+ 204   1              else if( (SSCON0&0x07) == 0x03 ){
+ 205   2                      if(I2C_IntGet() == 0){
+ 206   3                              I2C_IntSet(1);
+ 207   3                      }
+ 208   2              }
+ 209   1              /*<必须手动清掉此位>*/  
+ 210   1              SSCON0 &= ~0X40;
+ 211   1      }
+ 212          
+ 213          
+ 214          
+ 215          
+ 216          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    188    ----
+   CODE SIZE        =    476    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =   ----    ----
+   XDATA SIZE       =     58    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =     21    ----
+   DATA SIZE        =     19       3
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
