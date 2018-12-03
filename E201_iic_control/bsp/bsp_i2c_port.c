@@ -1,7 +1,5 @@
 #include "sc93f833X_C.h"
 
-// simulate iic  
-// chg
 #define SDA0_Read()	P15
 #define SDA0_Set(x)	((x) ? (P15 = 1): (P15 = 0))
 
@@ -10,10 +8,6 @@
 
 int IIC_Port_Init(int ID){
 	if(ID == 0){
-		//GPIO_Init(SDA0_PORT, SDA0_PIN, GPIO_MODE_OUT_PP_HIGH_FAST);
-		//SDA0_Set(1);
-		//GPIO_Init(SCL0_PORT, SCL0_PIN, GPIO_MODE_OUT_PP_HIGH_FAST);
-		//SCL0_Set(1);
 		P1CON |= 0X30;
 		P1 |= 0X30;
 	}
@@ -33,7 +27,6 @@ int IIC_Port_SDA_Set(int ID,int Func){
 		}
 	}
 	return 0;
-	
 }
 /*
 	Func : 0->SDA 1->SCL

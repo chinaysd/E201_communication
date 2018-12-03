@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    12/02/2018  17:54:10  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    12/03/2018  16:35:24  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
@@ -51,15 +51,15 @@ LINK MAP OF MODULE:  .\Objects\E201_voice_control (?C_STARTUP)
             * * * * * * *   D A T A   M E M O R Y   * * * * * * *
             REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
             DATA    0008H     0013H     UNIT         ?DT?SYSTEM
-            DATA    001BH     000EH     UNIT         _DATA_GROUP_
-            DATA    0029H     0004H     UNIT         ?DT?TIMEOUT
-            DATA    002DH     0003H     UNIT         ?DT?_TIMEOUTDET_CHECK?TIMEOUT
-            IDATA   0030H     0001H     UNIT         ?STACK
+            DATA    001BH     000DH     UNIT         _DATA_GROUP_
+            DATA    0028H     0004H     UNIT         ?DT?TIMEOUT
+            DATA    002CH     0003H     UNIT         ?DT?_TIMEOUTDET_CHECK?TIMEOUT
+            IDATA   002FH     0001H     UNIT         ?STACK
 
             * * * * * * *  X D A T A   M E M O R Y  * * * * * * *
             XDATA   0000H     003AH     UNIT         ?XD?SYSTEM
 
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/02/2018  17:54:10  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/03/2018  16:35:24  PAGE 2
 
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
@@ -75,7 +75,6 @@ LINK MAP OF MODULE:  .\Objects\E201_voice_control (?C_STARTUP)
             CODE    002EH     0009H     UNIT         ?PR?_IIC_INIT?BSP_I2C_S
             CODE    0037H     0004H     UNIT         ?PR?BSP_INTINIT?BSP_I2C
             CODE    003BH     0003H     ABSOLUTE     
-* OVERLAP * CODE    003BH     0003H     ABSOLUTE     
             CODE    003EH     016AH     UNIT         ?C?LIB_CODE
             CODE    01A8H     010AH     UNIT         ?PR?_IIC_WRITEDATA?BSP_I2C_S
             CODE    02B2H     00B9H     UNIT         ?PR?SYSTEM_HANDLE?SYSTEM
@@ -90,21 +89,20 @@ LINK MAP OF MODULE:  .\Objects\E201_voice_control (?C_STARTUP)
             CODE    06E0H     0041H     UNIT         ?PR?TIMER0?SYSTEM
             CODE    0721H     0030H     UNIT         ?PR?_TIMEOUTDET_CHECK?TIMEOUT
             CODE    0751H     0028H     UNIT         ?PR?_IIC_PORT_WRITE?BSP_I2C_PORT
-            CODE    0779H     0026H     UNIT         ?PR?I2C_IRQ?SYSTEM
-            CODE    079FH     001DH     UNIT         ?PR?_IIC_DELAY_US?BSP_I2C_S
-            CODE    07BCH     001CH     UNIT         ?PR?_IIC_PORT_READ?BSP_I2C_PORT
-            CODE    07D8H     001CH     UNIT         ?PR?_TIMEOUT_RECORD?TIMEOUT
-            CODE    07F4H     001BH     UNIT         ?PR?BSP_UART1IQRHANDLE?SYSTEM
-            CODE    080FH     001AH     UNIT         ?PR?_IIC_PORT_SDA_SET?BSP_I2C_PORT
-            CODE    0829H     001AH     UNIT         ?PR?TIMEOUTDET_DECHANDLE?TIMEOUT
-            CODE    0843H     0017H     UNIT         ?PR?UART_INIT?BSP_UART
-            CODE    085AH     0013H     UNIT         ?PR?TIMER_INIT?BSP_TIMER
-            CODE    086DH     0012H     UNIT         ?PR?BSP_I2CINIT?BSP_I2C
-            CODE    087FH     000FH     UNIT         ?PR?_IIC_PORT_INIT?BSP_I2C_PORT
-            CODE    088EH     0009H     UNIT         ?PR?TIMEOUT_BASEVALUE?TIMEOUT
-            CODE    0897H     0007H     UNIT         ?PR?TIMER1?SYSTEM
-            CODE    089EH     0007H     UNIT         ?PR?LED_INIT?BSP_LED
-            CODE    08A5H     0007H     UNIT         ?C_INITSEG
+            CODE    0779H     001DH     UNIT         ?PR?_IIC_DELAY_US?BSP_I2C_S
+            CODE    0796H     001CH     UNIT         ?PR?_IIC_PORT_READ?BSP_I2C_PORT
+            CODE    07B2H     001CH     UNIT         ?PR?_TIMEOUT_RECORD?TIMEOUT
+            CODE    07CEH     001BH     UNIT         ?PR?BSP_UART1IQRHANDLE?SYSTEM
+            CODE    07E9H     001AH     UNIT         ?PR?_IIC_PORT_SDA_SET?BSP_I2C_PORT
+            CODE    0803H     001AH     UNIT         ?PR?TIMEOUTDET_DECHANDLE?TIMEOUT
+            CODE    081DH     0017H     UNIT         ?PR?UART_INIT?BSP_UART
+            CODE    0834H     0013H     UNIT         ?PR?TIMER_INIT?BSP_TIMER
+            CODE    0847H     0012H     UNIT         ?PR?BSP_I2CINIT?BSP_I2C
+            CODE    0859H     000FH     UNIT         ?PR?_IIC_PORT_INIT?BSP_I2C_PORT
+            CODE    0868H     0009H     UNIT         ?PR?TIMEOUT_BASEVALUE?TIMEOUT
+            CODE    0871H     0007H     UNIT         ?PR?TIMER1?SYSTEM
+            CODE    0878H     0007H     UNIT         ?PR?LED_INIT?BSP_LED
+            CODE    087FH     0007H     UNIT         ?C_INITSEG
 
 
 
@@ -119,11 +117,11 @@ SEGMENT                                      DATA_GROUP
   +--> ?C_INITSEG
 
 ?PR?MAIN?MAIN                              -----    -----
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/02/2018  17:54:10  PAGE 3
-
-
   +--> ?PR?SYSTEM_INIT?SYSTEM
   +--> ?PR?SYSTEM_HANDLE?SYSTEM
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/03/2018  16:35:24  PAGE 3
+
+
 
 ?PR?SYSTEM_INIT?SYSTEM                     001BH    0002H
   +--> ?PR?TIMEOUTDET_INIT?TIMEOUT
@@ -179,19 +177,15 @@ SEGMENT                                      DATA_GROUP
   +--> ?PR?_IIC_PORT_READ?BSP_I2C_PORT
 
 ?PR?_TIMEOUT_RECORD?TIMEOUT                001BH    0004H
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/02/2018  17:54:10  PAGE 4
-
-
   +--> ?PR?TIMEOUT_BASEVALUE?TIMEOUT
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/03/2018  16:35:24  PAGE 4
+
 
 *** NEW ROOT ***************************************************
 
 ?PR?TIMER0?SYSTEM                          -----    -----
   +--> ?PR?TIMEOUTDET_DECHANDLE?TIMEOUT
-
-*** NEW ROOT ***************************************************
-
-?PR?I2C_IRQ?SYSTEM                         0028H    0001H
 
 
 
@@ -202,7 +196,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\E201_voice_control (?C_STARTUP)
 
   -------         MODULE        ?C_STARTUP
   C:040BH         SEGMENT       ?C_C51STARTUP
-  I:0030H         SEGMENT       ?STACK
+  I:002FH         SEGMENT       ?STACK
   C:0000H         PUBLIC        ?C_STARTUP
   D:00E0H         SYMBOL        ACC
   D:00F0H         SYMBOL        B
@@ -239,15 +233,15 @@ SYMBOL TABLE OF MODULE:  .\Objects\E201_voice_control (?C_STARTUP)
   D:0080H         PUBLIC        P0
   D:0090H         PUBLIC        P1
   D:00A0H         PUBLIC        P2
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/02/2018  17:54:10  PAGE 5
-
-
   D:00D8H         PUBLIC        P5
   D:00A8H         PUBLIC        IE
   D:00B8H         PUBLIC        IP
   C:0003H         PUBLIC        main
   D:0098H         PUBLIC        SCON
   D:0088H         PUBLIC        TCON
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/03/2018  16:35:24  PAGE 5
+
+
   D:00C8H         PUBLIC        T2CON
   D:00D0H         PUBLIC        PSW
   -------         PROC          MAIN
@@ -278,7 +272,6 @@ SYMBOL TABLE OF MODULE:  .\Objects\E201_voice_control (?C_STARTUP)
   C:0018H         PUBLIC        Rev_Byte
   D:0009H         PUBLIC        Rev_Buf
   D:000AH         PUBLIC        TimeOut_Para
-  B:00A0H.1       PUBLIC        P21
   D:0098H         PUBLIC        SCON
   D:0088H         PUBLIC        TCON
   B:00D8H.1       PUBLIC        P51
@@ -292,16 +285,12 @@ SYMBOL TABLE OF MODULE:  .\Objects\E201_voice_control (?C_STARTUP)
   D:008AH         PUBLIC        TL0
   D:008BH         PUBLIC        TL1
   C:06E0H         PUBLIC        timer0
-  C:07F4H         PUBLIC        Bsp_Uart1IqrHandle
-  C:0897H         PUBLIC        timer1
+  C:07CEH         PUBLIC        Bsp_Uart1IqrHandle
+  C:0871H         PUBLIC        timer1
   D:001AH         PUBLIC        Uart0SendFlag
   C:0028H         PUBLIC        Timer2Int
   D:00C8H         PUBLIC        T2CON
-  C:0779H         PUBLIC        I2c_Irq
   D:00D0H         PUBLIC        PSW
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/02/2018  17:54:10  PAGE 6
-
-
   -------         PROC          SYSTEM_INIT
   -------         DO            
   D:001BH         SYMBOL        i
@@ -310,6 +299,9 @@ SYMBOL TABLE OF MODULE:  .\Objects\E201_voice_control (?C_STARTUP)
   C:0497H         LINE#         18
   C:0497H         LINE#         20
   C:049AH         LINE#         21
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/03/2018  16:35:24  PAGE 6
+
+
   C:049DH         LINE#         22
   C:049FH         LINE#         23
   C:04A4H         LINE#         24
@@ -343,114 +335,96 @@ SYMBOL TABLE OF MODULE:  .\Objects\E201_voice_control (?C_STARTUP)
   -------         PROC          SYSTEM_HANDLE
   C:02B2H         LINE#         51
   C:02B2H         LINE#         52
-  C:02B2H         LINE#         75
-  C:02B8H         LINE#         76
-  C:02CFH         LINE#         78
-  C:02EBH         LINE#         79
-  C:02EBH         LINE#         80
-  C:02F3H         LINE#         81
-  C:02F6H         LINE#         82
-  C:0306H         LINE#         83
-  C:030CH         LINE#         84
-  C:030CH         LINE#         85
-  C:030DH         LINE#         86
-  C:030DH         LINE#         88
-  C:030DH         LINE#         89
-  C:0315H         LINE#         90
-  C:0318H         LINE#         93
-  C:0318H         LINE#         94
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/02/2018  17:54:10  PAGE 7
+  C:02B2H         LINE#         53
+  C:02B8H         LINE#         54
+  C:02CFH         LINE#         56
+  C:02EBH         LINE#         57
+  C:02EBH         LINE#         58
+  C:02F3H         LINE#         59
+  C:02F6H         LINE#         60
+  C:0306H         LINE#         61
+  C:030CH         LINE#         62
+  C:030CH         LINE#         63
+  C:030DH         LINE#         64
+  C:030DH         LINE#         66
+  C:030DH         LINE#         67
+  C:0315H         LINE#         68
+  C:0318H         LINE#         70
+  C:0318H         LINE#         71
+  C:0319H         LINE#         72
+  C:0319H         LINE#         74
+  C:0319H         LINE#         75
+  C:0321H         LINE#         76
+  C:0324H         LINE#         77
+  C:0324H         LINE#         78
+  C:0325H         LINE#         79
+  C:0325H         LINE#         81
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/03/2018  16:35:24  PAGE 7
 
 
-  C:0319H         LINE#         95
-  C:0319H         LINE#         97
-  C:0319H         LINE#         98
-  C:0321H         LINE#         99
-  C:0324H         LINE#         101
-  C:0324H         LINE#         102
-  C:0325H         LINE#         103
-  C:0325H         LINE#         105
-  C:0325H         LINE#         106
-  C:032DH         LINE#         107
-  C:0330H         LINE#         110
-  C:0330H         LINE#         111
-  C:0331H         LINE#         112
-  C:0331H         LINE#         114
-  C:0331H         LINE#         115
-  C:0339H         LINE#         116
-  C:033CH         LINE#         118
-  C:033CH         LINE#         119
-  C:033DH         LINE#         120
-  C:033DH         LINE#         122
-  C:033DH         LINE#         123
-  C:0345H         LINE#         124
-  C:0348H         LINE#         126
-  C:0348H         LINE#         127
-  C:0349H         LINE#         128
-  C:0349H         LINE#         129
-  C:0349H         LINE#         130
-  C:034FH         LINE#         131
-  C:0351H         LINE#         136
-  C:0365H         LINE#         137
-  C:036AH         LINE#         142
-  C:036AH         LINE#         143
-  C:036AH         LINE#         144
-  C:036AH         LINE#         145
-  C:036AH         LINE#         146
-  C:036AH         LINE#         148
+  C:0325H         LINE#         82
+  C:032DH         LINE#         83
+  C:0330H         LINE#         84
+  C:0330H         LINE#         85
+  C:0331H         LINE#         86
+  C:0331H         LINE#         88
+  C:0331H         LINE#         89
+  C:0339H         LINE#         90
+  C:033CH         LINE#         91
+  C:033CH         LINE#         92
+  C:033DH         LINE#         93
+  C:033DH         LINE#         95
+  C:033DH         LINE#         96
+  C:0345H         LINE#         97
+  C:0348H         LINE#         99
+  C:0348H         LINE#         100
+  C:0349H         LINE#         101
+  C:0349H         LINE#         102
+  C:0349H         LINE#         103
+  C:034FH         LINE#         104
+  C:0351H         LINE#         105
+  C:0365H         LINE#         106
+  C:036AH         LINE#         107
+  C:036AH         LINE#         108
+  C:036AH         LINE#         109
+  C:036AH         LINE#         110
+  C:036AH         LINE#         111
+  C:036AH         LINE#         113
   -------         ENDPROC       SYSTEM_HANDLE
   -------         PROC          TIMER0
-  C:06E0H         LINE#         156
-  C:06FDH         LINE#         158
-  C:0700H         LINE#         159
-  C:0703H         LINE#         160
-  C:0706H         LINE#         161
+  C:06E0H         LINE#         121
+  C:06FDH         LINE#         123
+  C:0700H         LINE#         124
+  C:0703H         LINE#         125
+  C:0706H         LINE#         126
   -------         ENDPROC       TIMER0
   -------         PROC          TIMER1
-  C:0897H         LINE#         163
-  C:0897H         LINE#         165
-  C:089AH         LINE#         166
-  C:089DH         LINE#         168
+  C:0871H         LINE#         128
+  C:0871H         LINE#         130
+  C:0874H         LINE#         131
+  C:0877H         LINE#         133
   -------         ENDPROC       TIMER1
   -------         PROC          TIMER2INT
-  C:0028H         LINE#         170
-  C:0028H         LINE#         172
-  C:002AH         LINE#         174
+  C:0028H         LINE#         135
+  C:0028H         LINE#         137
+  C:002AH         LINE#         139
   -------         ENDPROC       TIMER2INT
   -------         PROC          BSP_UART1IQRHANDLE
-  C:07F4H         LINE#         182
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/02/2018  17:54:10  PAGE 8
+  C:07CEH         LINE#         147
+  C:07D0H         LINE#         149
+  C:07D5H         LINE#         150
+  C:07D5H         LINE#         151
+  C:07D8H         LINE#         152
+  C:07DBH         LINE#         153
+  C:07DBH         LINE#         154
+  C:07E0H         LINE#         155
+  C:07E3H         LINE#         156
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/03/2018  16:35:24  PAGE 8
 
 
-  C:07F6H         LINE#         184
-  C:07FBH         LINE#         185
-  C:07FBH         LINE#         186
-  C:07FEH         LINE#         187
-  C:0801H         LINE#         188
-  C:0801H         LINE#         189
-  C:0806H         LINE#         190
-  C:0809H         LINE#         191
-  C:080CH         LINE#         192
-  C:080CH         LINE#         193
+  C:07E6H         LINE#         157
+  C:07E6H         LINE#         158
   -------         ENDPROC       BSP_UART1IQRHANDLE
-  -------         PROC          I2C_IRQ
-  -------         DO            
-  D:0028H         SYMBOL        get_data
-  -------         ENDDO         
-  C:0779H         LINE#         195
-  C:077BH         LINE#         197
-  C:0783H         LINE#         198
-  C:0786H         LINE#         199
-  C:078AH         LINE#         201
-  C:078AH         LINE#         202
-  C:078CH         LINE#         204
-  C:0794H         LINE#         205
-  C:0797H         LINE#         206
-  C:0799H         LINE#         207
-  C:0799H         LINE#         208
-  C:0799H         LINE#         210
-  C:079CH         LINE#         211
-  -------         ENDPROC       I2C_IRQ
   -------         ENDMOD        SYSTEM
 
   -------         MODULE        BSP_LED
@@ -459,7 +433,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\E201_voice_control (?C_STARTUP)
   D:0090H         PUBLIC        P1
   D:00A0H         PUBLIC        P2
   D:00D8H         PUBLIC        P5
-  C:089EH         PUBLIC        Led_Init
+  C:0878H         PUBLIC        Led_Init
   D:00A8H         PUBLIC        IE
   D:00B8H         PUBLIC        IP
   D:00DAH         PUBLIC        P5PH
@@ -469,19 +443,16 @@ SYMBOL TABLE OF MODULE:  .\Objects\E201_voice_control (?C_STARTUP)
   D:00C8H         PUBLIC        T2CON
   D:00D0H         PUBLIC        PSW
   -------         PROC          LED_INIT
-  C:089EH         LINE#         4
-  C:089EH         LINE#         5
-  C:089EH         LINE#         6
-  C:08A1H         LINE#         7
-  C:08A4H         LINE#         8
+  C:0878H         LINE#         4
+  C:0878H         LINE#         5
+  C:0878H         LINE#         6
+  C:087BH         LINE#         7
+  C:087EH         LINE#         8
   -------         ENDPROC       LED_INIT
   -------         ENDMOD        BSP_LED
 
   -------         MODULE        BSP_TIMER
   C:0000H         SYMBOL        _ICE_DUMMY_
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/02/2018  17:54:10  PAGE 9
-
-
   D:0080H         PUBLIC        P0
   D:0090H         PUBLIC        P1
   D:00A0H         PUBLIC        P2
@@ -497,19 +468,22 @@ SYMBOL TABLE OF MODULE:  .\Objects\E201_voice_control (?C_STARTUP)
   D:008AH         PUBLIC        TL0
   B:0088H.4       PUBLIC        TR0
   D:00C8H         PUBLIC        T2CON
-  C:085AH         PUBLIC        Timer_Init
+  C:0834H         PUBLIC        Timer_Init
   D:00D0H         PUBLIC        PSW
   -------         PROC          TIMER_INIT
-  C:085AH         LINE#         4
-  C:085AH         LINE#         5
-  C:085AH         LINE#         6
-  C:085DH         LINE#         7
-  C:0860H         LINE#         8
-  C:0863H         LINE#         9
-  C:0866H         LINE#         10
-  C:0868H         LINE#         11
-  C:086AH         LINE#         12
-  C:086CH         LINE#         13
+  C:0834H         LINE#         4
+  C:0834H         LINE#         5
+  C:0834H         LINE#         6
+  C:0837H         LINE#         7
+  C:083AH         LINE#         8
+  C:083DH         LINE#         9
+  C:0840H         LINE#         10
+  C:0842H         LINE#         11
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/03/2018  16:35:24  PAGE 9
+
+
+  C:0844H         LINE#         12
+  C:0846H         LINE#         13
   -------         ENDPROC       TIMER_INIT
   -------         ENDMOD        BSP_TIMER
 
@@ -522,7 +496,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\E201_voice_control (?C_STARTUP)
   D:00D8H         PUBLIC        P5
   B:00A8H.7       PUBLIC        EA
   D:00A8H         PUBLIC        IE
-  C:0843H         PUBLIC        Uart_Init
+  C:081DH         PUBLIC        Uart_Init
   D:00B8H         PUBLIC        IP
   B:00A0H.0       PUBLIC        P20
   D:0098H         PUBLIC        SCON
@@ -538,22 +512,19 @@ SYMBOL TABLE OF MODULE:  .\Objects\E201_voice_control (?C_STARTUP)
   -------         DO            
   D:0006H         SYMBOL        baud_set
   -------         ENDDO         
-  C:0843H         LINE#         6
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/02/2018  17:54:10  PAGE 10
-
-
-  C:0843H         LINE#         7
-  C:0843H         LINE#         8
-  C:0844H         LINE#         9
-  C:0847H         LINE#         10
-  C:084AH         LINE#         11
-  C:084AH         LINE#         12
-  C:084DH         LINE#         13
-  C:084FH         LINE#         14
-  C:0852H         LINE#         15
-  C:0855H         LINE#         16
-  C:0857H         LINE#         17
-  C:0859H         LINE#         18
+  C:081DH         LINE#         6
+  C:081DH         LINE#         7
+  C:081DH         LINE#         8
+  C:081EH         LINE#         9
+  C:0821H         LINE#         10
+  C:0824H         LINE#         11
+  C:0824H         LINE#         12
+  C:0827H         LINE#         13
+  C:0829H         LINE#         14
+  C:082CH         LINE#         15
+  C:082FH         LINE#         16
+  C:0831H         LINE#         17
+  C:0833H         LINE#         18
   -------         ENDPROC       UART_INIT
   -------         ENDMOD        BSP_UART
 
@@ -568,6 +539,9 @@ SYMBOL TABLE OF MODULE:  .\Objects\E201_voice_control (?C_STARTUP)
   D:00B8H         PUBLIC        IP
   B:00A0H.1       PUBLIC        P21
   D:0098H         PUBLIC        SCON
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/03/2018  16:35:24  PAGE 10
+
+
   D:0088H         PUBLIC        TCON
   D:009DH         PUBLIC        SSCON0
   D:009EH         PUBLIC        SSCON1
@@ -576,21 +550,21 @@ SYMBOL TABLE OF MODULE:  .\Objects\E201_voice_control (?C_STARTUP)
   D:00A1H         PUBLIC        P2CON
   D:00C8H         PUBLIC        T2CON
   D:00D0H         PUBLIC        PSW
-  C:086DH         PUBLIC        Bsp_I2cInit
+  C:0847H         PUBLIC        Bsp_I2cInit
   -------         PROC          BSP_INTINIT
   C:0037H         LINE#         16
   C:0037H         LINE#         17
   C:003AH         LINE#         18
   -------         ENDPROC       BSP_INTINIT
   -------         PROC          BSP_I2CINIT
-  C:086DH         LINE#         33
-  C:086DH         LINE#         34
-  C:0870H         LINE#         35
-  C:0873H         LINE#         36
-  C:0876H         LINE#         37
-  C:0879H         LINE#         39
-  C:087CH         LINE#         40
-  C:087EH         LINE#         41
+  C:0847H         LINE#         33
+  C:0847H         LINE#         34
+  C:084AH         LINE#         35
+  C:084DH         LINE#         36
+  C:0850H         LINE#         37
+  C:0853H         LINE#         39
+  C:0856H         LINE#         40
+  C:0858H         LINE#         41
   -------         ENDPROC       BSP_I2CINIT
   -------         ENDMOD        BSP_I2C
 
@@ -599,47 +573,47 @@ SYMBOL TABLE OF MODULE:  .\Objects\E201_voice_control (?C_STARTUP)
   D:0080H         PUBLIC        P0
   D:0090H         PUBLIC        P1
   D:00A0H         PUBLIC        P2
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/02/2018  17:54:10  PAGE 11
-
-
   D:00D8H         PUBLIC        P5
   D:00A8H         PUBLIC        IE
   D:00B8H         PUBLIC        IP
-  C:080FH         PUBLIC        _IIC_Port_SDA_Set
+  C:07E9H         PUBLIC        _IIC_Port_SDA_Set
   D:0098H         PUBLIC        SCON
   B:0090H.4       PUBLIC        P14
   D:0088H         PUBLIC        TCON
   B:0090H.5       PUBLIC        P15
-  C:07BCH         PUBLIC        _IIC_Port_Read
+  C:0796H         PUBLIC        _IIC_Port_Read
   C:0751H         PUBLIC        _IIC_Port_Write
-  C:087FH         PUBLIC        _IIC_Port_Init
+  C:0859H         PUBLIC        _IIC_Port_Init
   D:0091H         PUBLIC        P1CON
   D:00C8H         PUBLIC        T2CON
   D:00D0H         PUBLIC        PSW
   -------         PROC          _IIC_PORT_INIT
   D:0006H         SYMBOL        ID
-  C:087FH         LINE#         11
-  C:087FH         LINE#         12
-  C:0883H         LINE#         17
-  C:0886H         LINE#         18
-  C:0889H         LINE#         19
-  C:0889H         LINE#         20
-  C:088DH         LINE#         21
+  C:0859H         LINE#         11
+  C:0859H         LINE#         12
+  C:085DH         LINE#         17
+  C:0860H         LINE#         18
+  C:0863H         LINE#         19
+  C:0863H         LINE#         20
+  C:0867H         LINE#         21
   -------         ENDPROC       _IIC_PORT_INIT
   -------         PROC          _IIC_PORT_SDA_SET
   D:0006H         SYMBOL        ID
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/03/2018  16:35:24  PAGE 11
+
+
   D:0004H         SYMBOL        Func
-  C:080FH         LINE#         25
-  C:080FH         LINE#         26
-  C:0813H         LINE#         27
-  C:0817H         LINE#         28
-  C:081AH         LINE#         29
-  C:0822H         LINE#         30
-  C:0825H         LINE#         31
-  C:0825H         LINE#         33
-  C:0825H         LINE#         34
-  C:0825H         LINE#         35
-  C:0828H         LINE#         37
+  C:07E9H         LINE#         25
+  C:07E9H         LINE#         26
+  C:07EDH         LINE#         27
+  C:07F1H         LINE#         28
+  C:07F4H         LINE#         29
+  C:07FCH         LINE#         30
+  C:07FFH         LINE#         31
+  C:07FFH         LINE#         33
+  C:07FFH         LINE#         34
+  C:07FFH         LINE#         35
+  C:0802H         LINE#         37
   -------         ENDPROC       _IIC_PORT_SDA_SET
   -------         PROC          _IIC_PORT_WRITE
   D:0006H         SYMBOL        ID
@@ -659,21 +633,18 @@ SYMBOL TABLE OF MODULE:  .\Objects\E201_voice_control (?C_STARTUP)
   -------         ENDPROC       _IIC_PORT_WRITE
   -------         PROC          _IIC_PORT_READ
   D:0006H         SYMBOL        ID
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/02/2018  17:54:10  PAGE 12
-
-
   D:0004H         SYMBOL        Func
-  C:07BCH         LINE#         56
-  C:07BCH         LINE#         57
-  C:07C0H         LINE#         58
-  C:07C4H         LINE#         59
-  C:07C8H         LINE#         60
-  C:07CEH         LINE#         61
-  C:07D4H         LINE#         62
-  C:07D4H         LINE#         64
-  C:07D4H         LINE#         65
-  C:07D4H         LINE#         66
-  C:07D7H         LINE#         67
+  C:0796H         LINE#         56
+  C:0796H         LINE#         57
+  C:079AH         LINE#         58
+  C:079EH         LINE#         59
+  C:07A2H         LINE#         60
+  C:07A8H         LINE#         61
+  C:07AEH         LINE#         62
+  C:07AEH         LINE#         64
+  C:07AEH         LINE#         65
+  C:07AEH         LINE#         66
+  C:07B1H         LINE#         67
   -------         ENDPROC       _IIC_PORT_READ
   -------         ENDMOD        BSP_I2C_PORT
 
@@ -688,6 +659,9 @@ SYMBOL TABLE OF MODULE:  .\Objects\E201_voice_control (?C_STARTUP)
   D:00B8H         PUBLIC        IP
   C:069DH         PUBLIC        _IIC_Write_Data
   C:036BH         SYMBOL        _IIC_ReadData
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/03/2018  16:35:24  PAGE 12
+
+
   D:0098H         PUBLIC        SCON
   D:0088H         PUBLIC        TCON
   C:01AEH         SYMBOL        _IIC_WriteData
@@ -696,7 +670,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\E201_voice_control (?C_STARTUP)
   C:0521H         SYMBOL        _IIC_Nck
   C:05F7H         SYMBOL        _IIC_Stop
   D:00C8H         PUBLIC        T2CON
-  C:07A2H         SYMBOL        _IIC_Delay_us
+  C:077CH         SYMBOL        _IIC_Delay_us
   D:00D0H         PUBLIC        PSW
   -------         PROC          L?0034
   -------         ENDPROC       L?0034
@@ -705,11 +679,11 @@ SYMBOL TABLE OF MODULE:  .\Objects\E201_voice_control (?C_STARTUP)
   -------         DO            
   D:0005H         SYMBOL        j
   -------         ENDDO         
-  C:07A2H         LINE#         7
-  C:07A2H         LINE#         9
-  C:07ACH         LINE#         10
-  C:07BBH         LINE#         11
-  C:07BBH         LINE#         12
+  C:077CH         LINE#         7
+  C:077CH         LINE#         9
+  C:0786H         LINE#         10
+  C:0795H         LINE#         11
+  C:0795H         LINE#         12
   -------         ENDPROC       _IIC_DELAY_US
   -------         PROC          _IIC_INIT
   D:0001H         SYMBOL        p
@@ -719,9 +693,6 @@ SYMBOL TABLE OF MODULE:  .\Objects\E201_voice_control (?C_STARTUP)
   -------         PROC          _IIC_START
   D:0022H         SYMBOL        p
   C:058FH         LINE#         19
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/02/2018  17:54:10  PAGE 13
-
-
   C:0595H         LINE#         20
   C:05A5H         LINE#         21
   C:05A8H         LINE#         22
@@ -748,6 +719,9 @@ SYMBOL TABLE OF MODULE:  .\Objects\E201_voice_control (?C_STARTUP)
   C:01DCH         LINE#         36
   C:01EAH         LINE#         37
   C:01EAH         LINE#         38
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/03/2018  16:35:24  PAGE 13
+
+
   C:01F0H         LINE#         39
   C:01F6H         LINE#         40
   C:020DH         LINE#         41
@@ -779,9 +753,6 @@ SYMBOL TABLE OF MODULE:  .\Objects\E201_voice_control (?C_STARTUP)
   C:0645H         LINE#         67
   C:064BH         LINE#         68
   -------         ENDPROC       _IIC_STOP
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/02/2018  17:54:10  PAGE 14
-
-
   -------         PROC          _IIC_NCK
   D:0022H         SYMBOL        p
   C:0521H         LINE#         71
@@ -808,6 +779,9 @@ SYMBOL TABLE OF MODULE:  .\Objects\E201_voice_control (?C_STARTUP)
   C:0394H         LINE#         99
   C:03ABH         LINE#         100
   C:03B1H         LINE#         101
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/03/2018  16:35:24  PAGE 14
+
+
   C:03C7H         LINE#         102
   C:03D6H         LINE#         103
   C:03D6H         LINE#         104
@@ -839,9 +813,6 @@ SYMBOL TABLE OF MODULE:  .\Objects\E201_voice_control (?C_STARTUP)
   D:0021H         SYMBOL        Write_Data
   C:069DH         LINE#         123
   C:06A5H         LINE#         124
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/02/2018  17:54:10  PAGE 15
-
-
   C:06A8H         LINE#         125
   C:06B1H         LINE#         126
   C:06B7H         LINE#         127
@@ -859,49 +830,49 @@ SYMBOL TABLE OF MODULE:  .\Objects\E201_voice_control (?C_STARTUP)
 
   -------         MODULE        TIMEOUT
   C:0000H         SYMBOL        _ICE_DUMMY_
-  C:07D8H         PUBLIC        _TimeOut_Record
-  C:0829H         PUBLIC        TimeOutDet_DecHandle
-  C:088EH         PUBLIC        TimeOut_BaseValue
+  C:07B2H         PUBLIC        _TimeOut_Record
+  C:0803H         PUBLIC        TimeOutDet_DecHandle
+  C:0868H         PUBLIC        TimeOut_BaseValue
   C:0721H         PUBLIC        _TimeOutDet_Check
-  D:0029H         PUBLIC        InsBaseNum
+  D:0028H         PUBLIC        InsBaseNum
   C:001EH         PUBLIC        TimeOutDet_Init
   -------         PROC          TIMEOUTDET_INIT
   C:001EH         LINE#         6
   C:001EH         LINE#         7
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/03/2018  16:35:24  PAGE 15
+
+
   C:001EH         LINE#         8
   C:0027H         LINE#         9
   -------         ENDPROC       TIMEOUTDET_INIT
   -------         PROC          TIMEOUTDET_DECHANDLE
-  C:0829H         LINE#         11
-  C:0829H         LINE#         12
-  C:0829H         LINE#         13
-  C:0842H         LINE#         14
+  C:0803H         LINE#         11
+  C:0803H         LINE#         12
+  C:0803H         LINE#         13
+  C:081CH         LINE#         14
   -------         ENDPROC       TIMEOUTDET_DECHANDLE
   -------         PROC          TIMEOUT_BASEVALUE
-  C:088EH         LINE#         16
-  C:088EH         LINE#         17
-  C:088EH         LINE#         18
-  C:0896H         LINE#         19
+  C:0868H         LINE#         16
+  C:0868H         LINE#         17
+  C:0868H         LINE#         18
+  C:0870H         LINE#         19
   -------         ENDPROC       TIMEOUT_BASEVALUE
   -------         PROC          _TIMEOUT_RECORD
   D:0001H         SYMBOL        TimeOutPara
   D:001BH         SYMBOL        timeoutvalue
-  C:07D8H         LINE#         21
-  C:07E0H         LINE#         23
-  C:07E0H         LINE#         24
-  C:07E6H         LINE#         25
+  C:07B2H         LINE#         21
+  C:07BAH         LINE#         23
+  C:07BAH         LINE#         24
+  C:07C0H         LINE#         25
   -------         ENDPROC       _TIMEOUT_RECORD
   -------         PROC          _TIMEOUTDET_CHECK
-  D:002DH         SYMBOL        TimeOutPara
+  D:002CH         SYMBOL        TimeOutPara
   C:0721H         LINE#         33
   C:0727H         LINE#         34
   C:0727H         LINE#         35
   C:0750H         LINE#         36
   -------         ENDPROC       _TIMEOUTDET_CHECK
   -------         ENDMOD        TIMEOUT
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/02/2018  17:54:10  PAGE 16
-
-
 
   -------         MODULE        ?C?CSTPTR
   C:003EH         PUBLIC        ?C?CSTPTR
@@ -928,6 +899,9 @@ SYMBOL TABLE OF MODULE:  .\Objects\E201_voice_control (?C_STARTUP)
   -------         ENDMOD        ?C?LSTOPTR
 
   -------         MODULE        ?C?LLDPTR0
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/03/2018  16:35:24  PAGE 16
+
+
   C:00FAH         PUBLIC        ?C?LLDPTR0
   -------         ENDMOD        ?C?LLDPTR0
 
@@ -959,9 +933,6 @@ SYMBOL TABLE OF MODULE:  .\Objects\E201_voice_control (?C_STARTUP)
   C:0167H         PUBLIC        ?C?LLDPDATA0
   -------         ENDMOD        ?C?LLDPDATA0
 
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/02/2018  17:54:10  PAGE 17
-
-
   -------         MODULE        ?C?LLDCODE0
   C:0174H         PUBLIC        ?C?LLDCODE0
   -------         ENDMOD        ?C?LLDCODE0
@@ -988,11 +959,10 @@ SYMBOL TABLE OF MODULE:  .\Objects\E201_voice_control (?C_STARTUP)
     SEGMENT: ?PR?BSP_I2CINIT?BSP_I2C
 
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/03/2018  16:35:24  PAGE 17
+
+
     SEGMENT: ?PR?_TIMEOUTDET_CHECK?TIMEOUT
 
-*** WARNING L5: CODE SPACE MEMORY OVERLAP
-    FROM:    003BH
-    TO:      003DH
-
-Program Size: data=49.0 xdata=58 code=2223
-LINK/LOCATE RUN COMPLETE.  5 WARNING(S),  0 ERROR(S)
+Program Size: data=48.0 xdata=58 code=2182
+LINK/LOCATE RUN COMPLETE.  4 WARNING(S),  0 ERROR(S)
