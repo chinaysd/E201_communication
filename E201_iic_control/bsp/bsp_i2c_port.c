@@ -20,7 +20,7 @@ int IIC_Port_SDA_Set(int ID,int Func){
 	if(ID == 0){
 		if(Func == 0){
 			P1CON &= ~0X20;
-		}else if(Func == 1){
+		}else if(Func == 1){	
 			P1CON |= 0X20;
 		}else{
 			return 0;

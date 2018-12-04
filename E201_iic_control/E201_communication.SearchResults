@@ -1,0 +1,7 @@
+---- IIC_Port_SDA_Set Matches (6 in 2 files) ----
+Bsp_i2c_port.c (bsp):int IIC_Port_SDA_Set(int ID,int Func){
+Bsp_i2c_s.c (bsp):extern int IIC_Port_SDA_Set(int ID,int Func);
+Bsp_i2c_s.c (bsp):	IIC_Port_SDA_Set(p->ID, IN);
+Bsp_i2c_s.c (bsp):	IIC_Port_SDA_Set(p->ID, OUT);
+Bsp_i2c_s.c (bsp):	IIC_Port_SDA_Set(p->ID, IN);
+Bsp_i2c_s.c (bsp):	IIC_Port_SDA_Set(p->ID, OUT);
